@@ -42,10 +42,10 @@ function data()
                 
                 local xScale = lSeg / 5
                 local sp = params.railingWidth - (maxOffset - minOffset)
-                local rDisp = minOffset - sp * 0.5 - 0.75
-                local lDisp = maxOffset + sp * 0.5 + 0.75
+                local rDisp = minOffset - sp * 0.5 - 1
+                local lDisp = maxOffset + sp * 0.5 + 1
                 
-                local width = params.railingWidth + 1
+                local width = params.railingWidth + 1.5
                 local midOffset = (maxOffset + minOffset) * 0.5
                 local nPart = math.floor(width / 5 + 1)
                 if (nPart < 1) then nPart = 1 end
@@ -56,6 +56,14 @@ function data()
                 local set = function(n)
                     local x = (n - 1) * lSeg
                     local set = {
+                        {
+                            id = "trw/concrete_fence.mdl",
+                            transf = {xScale, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, x, rDisp, 0, 1}
+                        },
+                        {
+                            id = "trw/concrete_fence.mdl",
+                            transf = {xScale, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, x, lDisp, 0, 1}
+                        },
                         {
                             id = "trw/concrete_wall.mdl",
                             transf = {xScale, 0, 0, 0, 0, 1, 0, 0, 0, 0, maxHeight, 0, x, rDisp, -maxHeight, 1}
@@ -72,7 +80,7 @@ function data()
                             id = "trw/concrete_plane.mdl",
                             transf = {xScale, 0, 0, 0, 0, wScale, 0, 0, 0, 0, 1, 0, x, ref - (k - 1) * wPart, 0, 1}
                         })
-
+                        
                         if (n == 1) then
                             table.insert(set,
                                 {
@@ -86,6 +94,23 @@ function data()
                                     id = "trw/concrete_back_face.mdl",
                                     transf = {xScale, 0, 0, 0, 0, wScale, 0, 0, 0, 0, maxHeight, 0, x, ref - (k - 1) * wPart, 0, 1}
                                 })
+                        end
+                        
+                        if (#interval.lanes > 0) then
+                            if (n == 1) then
+                                table.insert(set,
+                                    {
+                                        id = "trw/brick_front_face.mdl",
+                                        transf = {xScale, 0, 0, 0, 0, wScale, 0, 0, 0, 0, 0.5, 0, x, ref - (k - 1) * wPart, 0, 1}
+                                    })
+                            end
+                            if (n == nSeg) then
+                                table.insert(set,
+                                    {
+                                        id = "trw/brick_back_face.mdl",
+                                        transf = {xScale, 0, 0, 0, 0, wScale, 0, 0, 0, 0, 0.5, 0, x, ref - (k - 1) * wPart, 0, 1}
+                                    })
+                            end
                         end
                     end
                     
