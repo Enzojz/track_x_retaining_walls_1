@@ -1,7 +1,7 @@
 function data()
     return {
         en = {
-            NAME = "Tracks on Retaining walls",
+            NAME = "Tracks × Retaining Walls",
             DESC = [[A set of bridge help you build tracks with retaining walls under it.
 * Shader Enhancement mod is required by this mod to make a correct rendering.
 
@@ -24,7 +24,7 @@ Keep fighting, China!]],
             HALF_ARCH_BRIDGE = "Half side of arch bridge",
         },
         fr = {
-            NAME = "Voie sur mur de soutènement",
+            NAME = "Voie × Mur de soutènement",
             DESC = [[Ce mod contient un ensemble de pont pour facilier la construction des murs de soutènement sous la voie.
 * Shader Enhancement mod est exigé pour un rendu correct de ce mod.    
 

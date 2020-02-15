@@ -2,7 +2,7 @@ function data()
   return {
     info = {
       severityAdd = "NONE",
-      severityRemove = "CRITICAL",
+      severityRemove = "WARNING",
       name = _("NAME"),
       description = _("DESC"),
       authors = {
@@ -17,6 +17,8 @@ function data()
       tags = {
         "Bridge",
         "Europe",
+        "Track",
+        "Street"
       },
     }
   }
