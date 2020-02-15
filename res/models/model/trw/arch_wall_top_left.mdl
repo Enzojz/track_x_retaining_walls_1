@@ -21,7 +21,8 @@ function data() return {
         children = {
           {
             materials = {
-              "trw/uv/brick.mtl"
+              "trw/uv/brick.mtl",
+              "trw/uz/brick.mtl"
             },
             mesh = "trw/arch_wall_top.msh",
             transf = { 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1 }

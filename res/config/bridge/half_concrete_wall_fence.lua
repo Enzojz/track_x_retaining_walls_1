@@ -5,14 +5,14 @@
 -- https://www.transportfever.net/lexicon/index.php?entry/288-raw-bridge-data/
 function data()
     return {
-        name = _("ARCH_COL"),
+        name = _("HALF_CONCRETE_WALL_FENCE"),
         
-        yearFrom = 0,
+        yearFrom = 1920,
         yearTo = 0,
         
         carriers = {"RAIL", "ROAD"},
         
-        speedLimit = 60,
+        speedLimit = 100,
         
         pillarLen = 0.5,
         
@@ -38,16 +38,16 @@ function data()
                 local nSeg = math.floor((interval.length) / 5)
                 if nSeg < 1 then nSeg = 1 end
                 local lSeg = interval.length / nSeg
+                
                 local minOffset = interval.lanes[1].offset
                 local maxOffset = interval.lanes[#interval.lanes].offset
                 
                 local xScale = lSeg / 5
-                local zScale = maxHeight - 3
                 local sp = params.railingWidth - (maxOffset - minOffset)
-                local rDisp = minOffset - sp * 0.5 - 0.75
-                local lDisp = maxOffset + sp * 0.5 + 0.75
+                local rDisp = minOffset - sp * 0.5 - 1
+                local lDisp = maxOffset + sp * 0.5 + 1
                 
-                local width = params.railingWidth + 0.5
+                local width = params.railingWidth + 1.5
                 local midOffset = (maxOffset + minOffset) * 0.5
                 local nPart = math.floor(width / 5 + 1)
                 if (nPart < 1) then nPart = 1 end
@@ -59,50 +59,42 @@ function data()
                     local x = (n - 1) * lSeg
                     local set = {
                         {
-                            id = "trw/brick_fence_right.mdl",
-                            transf = {xScale, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, x, rDisp - 0.25, 0, 1},
+                            id = "trw/concrete_fence.mdl",
+                            transf = {xScale, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, x, rDisp, 0, 1},
                             remove = true
                         },
                         {
-                            id = "trw/brick_fence_left.mdl",
-                            transf = {xScale, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, x, lDisp + 0.25, 0, 1}
+                            id = "trw/concrete_fence.mdl",
+                            transf = {xScale, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, x, lDisp, 0, 1}
                         },
                         {
-                            id = "trw/arch_col_top.mdl",
-                            transf = {xScale, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, x, rDisp, -3, 1},
+                            id = "trw/concrete_wall.mdl",
+                            transf = {xScale, 0, 0, 0, 0, 1, 0, 0, 0, 0, maxHeight, 0, x, rDisp, -maxHeight, 1},
                             remove = true
                         },
                         {
-                            id = "trw/arch_col_top.mdl",
-                            transf = {xScale, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, x, lDisp, -3, 1}
-                        },
-                        {
-                            id = "trw/arch_col_bottom.mdl",
-                            transf = {xScale, 0, 0, 0, 0, 1, 0, 0, 0, 0, zScale, 0, x, rDisp, -3, 1},
-                            remove = true
-                        },
-                        {
-                            id = "trw/arch_col_bottom.mdl",
-                            transf = {xScale, 0, 0, 0, 0, 1, 0, 0, 0, 0, zScale, 0, x, lDisp, -3, 1}
+                            id = "trw/concrete_wall.mdl",
+                            transf = {xScale, 0, 0, 0, 0, 1, 0, 0, 0, 0, maxHeight, 0, x, lDisp, -maxHeight, 1}
                         }
                     }
                     
                     for k = 1, nPart do
                         local yDisp = ref - (k - 1) * wPart
                         table.insert(set, {
-                            id = "trw/brick_plane.mdl",
+                            id = "trw/concrete_plane.mdl",
                             transf = {xScale, 0, 0, 0, 0, wScale, 0, 0, 0, 0, 1, 0, x, yDisp, 0, 1}
                         })
+                        
                         if (n == 1) then
                             table.insert(set, {
-                                id = "trw/brick_front_face.mdl",
-                                transf = {xScale, 0, 0, 0, 0, wScale, 0, 0, 0, 0, 0.5, 0, x, yDisp, 0, 1}
+                                id = "trw/concrete_front_face.mdl",
+                                transf = {xScale, 0, 0, 0, 0, wScale, 0, 0, 0, 0, maxHeight, 0, x, yDisp, 0, 1}
                             })
                         end
                         if (n == nSeg) then
                             table.insert(set, {
-                                id = "trw/brick_back_face.mdl",
-                                transf = {xScale, 0, 0, 0, 0, wScale, 0, 0, 0, 0, 0.5, 0, x, yDisp, 0, 1}
+                                id = "trw/concrete_back_face.mdl",
+                                transf = {xScale, 0, 0, 0, 0, wScale, 0, 0, 0, 0, maxHeight, 0, x, yDisp, 0, 1}
                             })
                         end
                     end
@@ -112,7 +104,13 @@ function data()
                 
                 local rs = {}
                 for s = 1, nSeg do
-                    table.insert(rs, set(s))
+                    local seth = {}
+                    for _, e in ipairs(set(s)) do
+                        if not e.remove then
+                            table.insert(seth, e)
+                        end
+                    end
+                    table.insert(rs, seth)
                 end
                 table.insert(result.railingModels, rs)
             end

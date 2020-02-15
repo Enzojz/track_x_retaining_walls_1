@@ -1,11 +1,13 @@
 -- Quick script for Transport Fever 2 Bridges
 -- Copyright Enzojz 2020
-
+-- Please study it and write your own code, it's easy to understand :)
+-- For more information about the format required by the game visite:
+-- https://www.transportfever.net/lexicon/index.php?entry/288-raw-bridge-data/
 function data()
     return {
-        name = _("Wall bridge"),
+        name = _("CONCRETE_WALL"),
         
-        yearFrom = 0,
+        yearFrom = 1920,
         yearTo = 0,
         
         carriers = {"RAIL", "ROAD"},
@@ -18,7 +20,7 @@ function data()
         pillarMaxDist = 9999.0,
         pillarTargetDist = 50.0,
         
-        cost = 150.0,
+        cost = 200.0,
         
         updateFn = function(params)
             local result = {
@@ -58,7 +60,8 @@ function data()
                     local set = {
                         {
                             id = "trw/concrete_wall.mdl",
-                            transf = {xScale, 0, 0, 0, 0, 1, 0, 0, 0, 0, maxHeight, 0, x, rDisp, -maxHeight, 1}
+                            transf = {xScale, 0, 0, 0, 0, 1, 0, 0, 0, 0, maxHeight, 0, x, rDisp, -maxHeight, 1},
+                            remove = true
                         },
                         {
                             id = "trw/concrete_wall.mdl",
@@ -67,25 +70,23 @@ function data()
                     }
                     
                     for k = 1, nPart do
-                        table.insert(set,
-                        {
+                        local yDisp = ref - (k - 1) * wPart
+                        table.insert(set, {
                             id = "trw/concrete_plane.mdl",
-                            transf = {xScale, 0, 0, 0, 0, wScale, 0, 0, 0, 0, 1, 0, x, ref - (k - 1) * wPart, 0, 1}
+                            transf = {xScale, 0, 0, 0, 0, wScale, 0, 0, 0, 0, 1, 0, x, yDisp, 0, 1}
                         })
-
+                        
                         if (n == 1) then
-                            table.insert(set,
-                                {
-                                    id = "trw/concrete_front_face.mdl",
-                                    transf = {xScale, 0, 0, 0, 0, wScale, 0, 0, 0, 0, maxHeight, 0, x, ref - (k - 1) * wPart, 0, 1}
-                                })
+                            table.insert(set, {
+                                id = "trw/concrete_front_face.mdl",
+                                transf = {xScale, 0, 0, 0, 0, wScale, 0, 0, 0, 0, maxHeight, 0, x, yDisp, 0, 1}
+                            })
                         end
                         if (n == nSeg) then
-                            table.insert(set,
-                                {
-                                    id = "trw/concrete_back_face.mdl",
-                                    transf = {xScale, 0, 0, 0, 0, wScale, 0, 0, 0, 0, maxHeight, 0, x, ref - (k - 1) * wPart, 0, 1}
-                                })
+                            table.insert(set, {
+                                id = "trw/concrete_back_face.mdl",
+                                transf = {xScale, 0, 0, 0, 0, wScale, 0, 0, 0, 0, maxHeight, 0, x, yDisp, 0, 1}
+                            })
                         end
                     end
                     

@@ -1,16 +1,18 @@
 -- Quick script for Transport Fever 2 Bridges
 -- Copyright Enzojz 2020
-
+-- Please study it and write your own code, it's easy to understand :)
+-- For more information about the format required by the game visite:
+-- https://www.transportfever.net/lexicon/index.php?entry/288-raw-bridge-data/
 function data()
     return {
-        name = _("Wall bridge"),
+        name = _("ARCH_WALL"),
         
         yearFrom = 0,
         yearTo = 0,
         
-        carriers = {"RAIL"},
+        carriers = {"RAIL", "ROAD"},
         
-        speedLimit = 100,
+        speedLimit = 60,
         
         pillarLen = 0.5,
         
@@ -29,7 +31,7 @@ function data()
             for _, height in ipairs(params.pillarHeights) do
                 table.insert(result.pillarModels, {{}})
             end
-
+            
             local maxHeight = math.max(0, table.unpack(params.pillarHeights)) + 5
             
             for i, interval in ipairs(params.railingIntervals) do
@@ -38,7 +40,7 @@ function data()
                 local lSeg = interval.length / nSeg
                 local minOffset = interval.lanes[1].offset
                 local maxOffset = interval.lanes[#interval.lanes].offset
-
+                
                 local xScale = lSeg / 5
                 local zScale = maxHeight - 3
                 local yScale = zScale / 12
@@ -60,7 +62,8 @@ function data()
                     local set = {
                         {
                             id = "trw/arch_wall_top_right.mdl",
-                            transf = {xScale, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, x, rDisp, -3, 1}
+                            transf = {xScale, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, x, rDisp, -3, 1},
+                            remove = true
                         },
                         {
                             id = "trw/arch_wall_top_left.mdl",
@@ -68,7 +71,8 @@ function data()
                         },
                         {
                             id = "trw/arch_wall_inner_right.mdl",
-                            transf = {xScale, 0, 0, 0, 0, 1, 0, 0, 0, 0, zScale, 0, x, rDisp, -3, 1}
+                            transf = {xScale, 0, 0, 0, 0, 1, 0, 0, 0, 0, zScale, 0, x, rDisp, -3, 1},
+                            remove = true
                         },
                         {
                             id = "trw/arch_wall_inner_left.mdl",
@@ -76,36 +80,35 @@ function data()
                         },
                         {
                             id = "trw/arch_wall_outer_right.mdl",
-                            transf = {xScale, 0, 0, 0, 0, yScale, 0, 0, 0, 0, zScale, 0, x, -yDisp + rDisp, -3, 1}
+                            transf = {xScale, 0, 0, 0, 0, yScale, 0, 0, 0, 0, zScale, 0, x, -yDisp + rDisp, -3, 1},
+                            remove = true
                         },
                         {
                             id = "trw/arch_wall_outer_left.mdl",
                             transf = {xScale, 0, 0, 0, 0, yScale, 0, 0, 0, 0, zScale, 0, x, yDisp + lDisp, -3, 1}
                         }
                     }
-                             
+                    
                     for k = 1, nPart do
-                        table.insert(set,
-                        {
+                        local yDisp = ref - (k - 1) * wPart
+                        table.insert(set, {
                             id = "trw/brick_plane.mdl",
-                            transf = {xScale, 0, 0, 0, 0, wScale, 0, 0, 0, 0, 1, 0, x, ref - (k - 1) * wPart, 0, 1}
+                            transf = {xScale, 0, 0, 0, 0, wScale, 0, 0, 0, 0, 1, 0, x, yDisp, 0, 1}
                         })
                         if (n == 1) then
-                            table.insert(set,
-                                {
-                                    id = "trw/brick_front_face.mdl",
-                                    transf = {xScale, 0, 0, 0, 0, wScale, 0, 0, 0, 0, maxHeight, 0, x, ref - (k - 1) * wPart, 0, 1}
-                                })
+                            table.insert(set, {
+                                id = "trw/brick_front_face.mdl",
+                                transf = {xScale, 0, 0, 0, 0, wScale, 0, 0, 0, 0, maxHeight, 0, x, yDisp, 0, 1}
+                            })
                         end
                         if (n == nSeg) then
-                            table.insert(set,
-                                {
-                                    id = "trw/brick_back_face.mdl",
-                                    transf = {xScale, 0, 0, 0, 0, wScale, 0, 0, 0, 0, maxHeight, 0, x, ref - (k - 1) * wPart, 0, 1}
-                                })
+                            table.insert(set, {
+                                id = "trw/brick_back_face.mdl",
+                                transf = {xScale, 0, 0, 0, 0, wScale, 0, 0, 0, 0, maxHeight, 0, x, yDisp, 0, 1}
+                            })
                         end
                     end
-
+                    
                     return set
                 end
                 

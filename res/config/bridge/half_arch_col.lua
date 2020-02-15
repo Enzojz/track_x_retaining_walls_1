@@ -5,7 +5,7 @@
 -- https://www.transportfever.net/lexicon/index.php?entry/288-raw-bridge-data/
 function data()
     return {
-        name = _("ARCH_COL"),
+        name = _("HALF_ARCH_COL"),
         
         yearFrom = 0,
         yearTo = 0,
@@ -112,7 +112,13 @@ function data()
                 
                 local rs = {}
                 for s = 1, nSeg do
-                    table.insert(rs, set(s))
+                    local seth = {}
+                    for _, e in ipairs(set(s)) do
+                        if not e.remove then
+                            table.insert(seth, e)
+                        end
+                    end
+                    table.insert(rs, seth)
                 end
                 table.insert(result.railingModels, rs)
             end

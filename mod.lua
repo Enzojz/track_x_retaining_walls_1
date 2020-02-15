@@ -3,8 +3,8 @@ function data()
     info = {
       severityAdd = "NONE",
       severityRemove = "CRITICAL",
-      name = _("name"),
-      description = _("desc_main"),
+      name = _("NAME"),
+      description = _("DESC"),
       authors = {
         {
           name = "Enzojz",

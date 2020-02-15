@@ -2,10 +2,18 @@ function data() return {
   subMeshes = {
     {
       indices = {
-        normal   = { count = 2976, offset = 35712 },
-        position = { count = 2976, offset = 35712 },
-        tangent  = { count = 2976, offset = 35712 },
-        uv0      = { count = 2976, offset = 35712 }
+        normal   = { count = 2184, offset = 35712 },
+        position = { count = 2184, offset = 35712 },
+        tangent  = { count = 2184, offset = 35712 },
+        uv0      = { count = 2184, offset = 35712 }
+      }
+    },
+    {
+      indices = {
+        normal   = { count = 792, offset = 37896 },
+        position = { count = 792, offset = 37896 },
+        tangent  = { count = 792, offset = 37896 },
+        uv0      = { count = 792, offset = 37896 }
       }
     }
   },
