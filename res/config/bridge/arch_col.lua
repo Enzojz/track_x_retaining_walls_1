@@ -59,30 +59,30 @@ function data()
                     local x = (n - 1) * lSeg
                     local set = {
                         {
-                            id = "trw/brick_fence_right.mdl",
+                            id = "bridge/trw/brick_fence_right.mdl",
                             transf = {xScale, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, x, rDisp - 0.25, 0, 1},
                             remove = true
                         },
                         {
-                            id = "trw/brick_fence_left.mdl",
+                            id = "bridge/trw/brick_fence_left.mdl",
                             transf = {xScale, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, x, lDisp + 0.25, 0, 1}
                         },
                         {
-                            id = "trw/arch_col_top.mdl",
+                            id = "bridge/trw/arch_col_top.mdl",
                             transf = {xScale, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, x, rDisp, -3, 1},
                             remove = true
                         },
                         {
-                            id = "trw/arch_col_top.mdl",
+                            id = "bridge/trw/arch_col_top.mdl",
                             transf = {xScale, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, x, lDisp, -3, 1}
                         },
                         {
-                            id = "trw/arch_col_bottom.mdl",
+                            id = "bridge/trw/arch_col_bottom.mdl",
                             transf = {xScale, 0, 0, 0, 0, 1, 0, 0, 0, 0, zScale, 0, x, rDisp, -3, 1},
                             remove = true
                         },
                         {
-                            id = "trw/arch_col_bottom.mdl",
+                            id = "bridge/trw/arch_col_bottom.mdl",
                             transf = {xScale, 0, 0, 0, 0, 1, 0, 0, 0, 0, zScale, 0, x, lDisp, -3, 1}
                         }
                     }
@@ -90,18 +90,18 @@ function data()
                     for k = 1, nPart do
                         local yDisp = ref - (k - 1) * wPart
                         table.insert(set, {
-                            id = "trw/brick_plane.mdl",
+                            id = "bridge/trw/brick_surface.mdl",
                             transf = {xScale, 0, 0, 0, 0, wScale, 0, 0, 0, 0, 1, 0, x, yDisp, 0, 1}
                         })
                         if (n == 1) then
                             table.insert(set, {
-                                id = "trw/brick_front_face.mdl",
+                                id = "bridge/trw/brick_front.mdl",
                                 transf = {xScale, 0, 0, 0, 0, wScale, 0, 0, 0, 0, 0.5, 0, x, yDisp, 0, 1}
                             })
                         end
                         if (n == nSeg) then
                             table.insert(set, {
-                                id = "trw/brick_back_face.mdl",
+                                id = "bridge/trw/brick_back.mdl",
                                 transf = {xScale, 0, 0, 0, 0, wScale, 0, 0, 0, 0, 0.5, 0, x, yDisp, 0, 1}
                             })
                         end

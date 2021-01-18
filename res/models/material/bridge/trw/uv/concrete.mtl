@@ -4,7 +4,7 @@ function data()
             fade_out_range = { fadeOutEndDist = 20000, fadeOutStartDist = 10000 },
             map_albedo = {
                 compressionAllowed = true,
-                fileName = "ground_texture/industry_gravel_big_01_albedo.dds",
+                fileName = "models/trw/concrete.dds",
                 magFilter = "LINEAR",
                 minFilter = "LINEAR_MIPMAP_LINEAR",
                 mipmapAlphaScale = 0,
@@ -14,7 +14,7 @@ function data()
             },
             map_metal_gloss_ao = {
                 compressionAllowed = true,
-                fileName = "ground_texture/industry_gravel_big_01_metal_gloss_ao.dds",
+                fileName = "models/trw/concrete_ao.dds",
                 magFilter = "LINEAR",
                 minFilter = "LINEAR_MIPMAP_LINEAR",
                 mipmapAlphaScale = 0,
@@ -24,7 +24,7 @@ function data()
             },
             map_normal = {
                 compressionAllowed = true,
-                fileName = "ground_texture/lot_detail_normal.dds",
+                fileName = "models/trw/concrete_normals.dds",
                 magFilter = "LINEAR",
                 minFilter = "LINEAR_MIPMAP_LINEAR",
                 mipmapAlphaScale = 0,
@@ -36,6 +36,6 @@ function data()
             polygon_offset = { factor = 0, units = 0 },
             two_sided = { twoSided = false }
         },
-        type = "PHYSICAL_NRML_MAP"
+        type = "SKINNING_PHYS_NRML_MAP"
     }
 end
