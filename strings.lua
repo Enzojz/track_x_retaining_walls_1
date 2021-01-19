@@ -5,9 +5,9 @@ function data()
             DESC = [[A set of bridge help you build tracks with retaining walls under it.
 * Shader Enhancement mod is required by this mod to make a correct rendering.
 
-Keep fighting, Wuhan!
-Keep fighting, Hubei!
-Keep fighting, China!]],
+Changelog:
+1.1 Skeleton support
+]],
             CONCRETE_WALL = "Concrete retaining wall",
             CONCRETE_WALL_FENCE = "Concrete retaining wall with Fence",
             CONCRETE_COL = "Simply concrete columns",
@@ -28,9 +28,9 @@ Keep fighting, China!]],
             DESC = [[Ce mod contient un ensemble de pont pour facilier la construction des murs de soutènement sous la voie.
 * Shader Enhancement mod est exigé pour un rendu correct de ce mod.    
 
-Bon courage, Wuhan!
-Bon courage, Hubei!
-Bon courage, la Chine!]],
+Changelog:
+1.1 Support de skeleton
+]],
             CONCRETE_WALL = "Mur de soutènement en béton",
             CONCRETE_WALL_FENCE = "Mur de soutènement en béton avec clôture",
             CONCRETE_COL = "Pilier simple en béton",
@@ -51,9 +51,9 @@ Bon courage, la Chine!]],
             DESC = [[本模组可以以桥梁方式在轨道下方建造挡土墙.
 * 需要着色器增强模组的支持。
 
-武汉加油！
-湖北加油！
-中国加油！]],
+更新记录：
+1.1 骨骼支持
+]],
             CONCRETE_WALL = "水泥挡土墙",
             CONCRETE_WALL_FENCE = "带护栏的水泥挡土墙",
             CONCRETE_COL = "简易水泥支撑",
@@ -74,9 +74,9 @@ Bon courage, la Chine!]],
             DESC = [[本模組可以以橋樑方式在軌道下方建造擋土牆.
 * 需要著色器增強模組的支持。
 
-武漢加油！
-湖北加油！
-中國加油！]],
+更新記錄：
+1.1 骨骼支持
+]],
             CONCRETE_WALL = "水泥擋土牆",
             CONCRETE_WALL_FENCE = "帶護欄的水泥擋土牆",
             CONCRETE_COL = "簡易水泥支撐",
