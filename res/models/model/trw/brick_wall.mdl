@@ -24,7 +24,7 @@ function data() return {
               "trw/uz/brick.mtl",
               "trw/uv/brick.mtl"
             },
-            mesh = "trw/brick_wall.msh",
+            mesh = "bridge/trw/brick_wall.msh",
             transf = { 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1 }
           }
         },

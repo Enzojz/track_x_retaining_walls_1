@@ -21,6 +21,8 @@ function data()
         pillarTargetDist = 50.0,
         
         cost = 200.0,
+        noParallelStripSubdivision = true,
+        ignoreWaterCollision = true,
         
         updateFn = function(params)
             local result = {
@@ -61,7 +63,6 @@ function data()
                         {
                             id = "bridge/trw/brick_wall.mdl",
                             transf = {xScale, 0, 0, 0, 0, 1, 0, 0, 0, 0, maxHeight, 0, x, rDisp, -maxHeight, 1},
-                            remove = true
                         },
                         {
                             id = "bridge/trw/brick_wall.mdl",

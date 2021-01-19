@@ -23,7 +23,7 @@ function data() return {
             materials = {
               "trw/uv/brick.mtl"
             },
-            mesh = "trw/arch_col_top_inner.msh",
+            mesh = "bridge/trw/arch_col_top_inner.msh",
             transf = { 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1 }
           }
         },

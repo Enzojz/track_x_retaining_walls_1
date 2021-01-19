@@ -3,6 +3,7 @@
 -- Please study it and write your own code, it's easy to understand :)
 -- For more information about the format required by the game visite:
 -- https://www.transportfever.net/lexicon/index.php?entry/288-raw-bridge-data/
+local dump = require "luadump"
 function data()
     return {
         name = _("ARCH_WALL"),
@@ -21,6 +22,8 @@ function data()
         pillarTargetDist = 50.0,
         
         cost = 200.0,
+        noParallelStripSubdivision = true,
+        ignoreWaterCollision = true,
         
         updateFn = function(params)
             local result = {
@@ -63,7 +66,6 @@ function data()
                         {
                             id = "bridge/trw/arch_wall_top_right.mdl",
                             transf = {xScale, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, x, rDisp, -3, 1},
-                            remove = true
                         },
                         {
                             id = "bridge/trw/arch_wall_top_left.mdl",
@@ -72,7 +74,6 @@ function data()
                         {
                             id = "bridge/trw/arch_wall_inner_right.mdl",
                             transf = {xScale, 0, 0, 0, 0, 1, 0, 0, 0, 0, zScale, 0, x, rDisp, -3, 1},
-                            remove = true
                         },
                         {
                             id = "bridge/trw/arch_wall_inner_left.mdl",
@@ -81,7 +82,6 @@ function data()
                         {
                             id = "bridge/trw/arch_wall_outer_right.mdl",
                             transf = {xScale, 0, 0, 0, 0, yScale, 0, 0, 0, 0, zScale, 0, x, -yDisp + rDisp, -3, 1},
-                            remove = true
                         },
                         {
                             id = "bridge/trw/arch_wall_outer_left.mdl",

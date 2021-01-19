@@ -24,7 +24,7 @@ function data() return {
               "trw/uz/concrete.mtl",
               "trw/uv/concrete.mtl"
             },
-            mesh = "trw/concrete_col_top.msh",
+            mesh = "bridge/trw/concrete_col_top.msh",
             transf = { 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1 }
           }
         },

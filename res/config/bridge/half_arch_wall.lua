@@ -21,6 +21,8 @@ function data()
         pillarTargetDist = 50.0,
         
         cost = 200.0,
+        noParallelStripSubdivision = true,
+        ignoreWaterCollision = true,
         
         updateFn = function(params)
             local result = {
@@ -63,7 +65,6 @@ function data()
                         {
                             id = "bridge/trw/arch_wall_top_right.mdl",
                             transf = {xScale, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, x, rDisp, -3, 1},
-                            remove = true
                         },
                         {
                             id = "bridge/trw/arch_wall_top_left.mdl",
@@ -72,7 +73,6 @@ function data()
                         {
                             id = "bridge/trw/arch_wall_inner_right.mdl",
                             transf = {xScale, 0, 0, 0, 0, 1, 0, 0, 0, 0, zScale, 0, x, rDisp, -3, 1},
-                            remove = true
                         },
                         {
                             id = "bridge/trw/arch_wall_inner_left.mdl",
@@ -81,7 +81,6 @@ function data()
                         {
                             id = "bridge/trw/arch_wall_outer_right.mdl",
                             transf = {xScale, 0, 0, 0, 0, yScale, 0, 0, 0, 0, zScale, 0, x, -yDisp + rDisp, -3, 1},
-                            remove = true
                         },
                         {
                             id = "bridge/trw/arch_wall_outer_left.mdl",
