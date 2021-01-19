@@ -9,6 +9,7 @@ Changelog:
 1.1 
 - Skeleton support
 - Half bridge fix
+- Switch spot fix
 ]],
             CONCRETE_WALL = "Concrete retaining wall",
             CONCRETE_WALL_FENCE = "Concrete retaining wall with Fence",
@@ -34,6 +35,7 @@ Changelog:
 1.1
 - Support de skeleton
 - Correction du demi-pont
+- Correction de la partie d'aiguillage
 ]],
             CONCRETE_WALL = "Mur de soutènement en béton",
             CONCRETE_WALL_FENCE = "Mur de soutènement en béton avec clôture",
@@ -58,7 +60,8 @@ Changelog:
 更新记录：
 1.1 
 - 骨骼支持
-- 错误半桥的修正
+- 错误半边桥的修正
+- 分岔支持
 ]],
             CONCRETE_WALL = "水泥挡土墙",
             CONCRETE_WALL_FENCE = "带护栏的水泥挡土墙",
@@ -83,7 +86,8 @@ Changelog:
 更新記錄：
 1.1
 - 骨骼支持
-- 錯誤半橋的修正
+- 錯誤半边橋的修正
+- 分岔支持
 ]],
             CONCRETE_WALL = "水泥擋土牆",
             CONCRETE_WALL_FENCE = "帶護欄的水泥擋土牆",

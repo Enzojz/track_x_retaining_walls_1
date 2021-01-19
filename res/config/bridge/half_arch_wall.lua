@@ -23,7 +23,7 @@ function data()
         cost = 200.0,
         noParallelStripSubdivision = true,
         ignoreWaterCollision = true,
-        
+        autoGeneration = false,
         updateFn = function(params)
             local result = {
                 railingModels = {},
@@ -97,7 +97,7 @@ function data()
                             table.remove(set, i)
                         end
                     end
-                    
+
                     for k = 1, nPart do
                         local yDisp = ref - (k - 1) * wPart
                         table.insert(set, {

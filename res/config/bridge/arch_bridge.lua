@@ -24,7 +24,7 @@ function data()
         
         noParallelStripSubdivision = true,
         ignoreWaterCollision = true,
-        
+        autoGeneration = false,
         updateFn = function(params)
             local result = {
                 railingModels = {},
