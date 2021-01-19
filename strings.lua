@@ -6,7 +6,9 @@ function data()
 * Shader Enhancement mod is required by this mod to make a correct rendering.
 
 Changelog:
-1.1 Skeleton support
+1.1 
+- Skeleton support
+- Half bridge fix
 ]],
             CONCRETE_WALL = "Concrete retaining wall",
             CONCRETE_WALL_FENCE = "Concrete retaining wall with Fence",
@@ -29,7 +31,9 @@ Changelog:
 * Shader Enhancement mod est exigé pour un rendu correct de ce mod.    
 
 Changelog:
-1.1 Support de skeleton
+1.1
+- Support de skeleton
+- Correction du demi-pont
 ]],
             CONCRETE_WALL = "Mur de soutènement en béton",
             CONCRETE_WALL_FENCE = "Mur de soutènement en béton avec clôture",
@@ -52,7 +56,9 @@ Changelog:
 * 需要着色器增强模组的支持。
 
 更新记录：
-1.1 骨骼支持
+1.1 
+- 骨骼支持
+- 错误半桥的修正
 ]],
             CONCRETE_WALL = "水泥挡土墙",
             CONCRETE_WALL_FENCE = "带护栏的水泥挡土墙",
@@ -75,7 +81,9 @@ Changelog:
 * 需要著色器增強模組的支持。
 
 更新記錄：
-1.1 骨骼支持
+1.1
+- 骨骼支持
+- 錯誤半橋的修正
 ]],
             CONCRETE_WALL = "水泥擋土牆",
             CONCRETE_WALL_FENCE = "帶護欄的水泥擋土牆",

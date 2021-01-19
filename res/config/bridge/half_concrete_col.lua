@@ -34,7 +34,7 @@ function data()
                 table.insert(result.pillarModels, {{}})
             end
             
-            local maxHeight = math.max(0, table.unpack(params.pillarHeights)) + 5
+            local maxHeight = math.max(15, table.unpack(params.pillarHeights)) + 5
             
             for i, interval in ipairs(params.railingIntervals) do
                 local nSeg = math.floor((interval.length) / 5)
@@ -94,6 +94,30 @@ function data()
                         }
                     }
                     
+
+                    if (interval.lanes[1].type == 2 or interval.lanes[1].type == 3) then
+                        set[1] = false
+                        set[3] = false
+                        set[7] = false
+                    end
+                    
+                    if (interval.lanes[#interval.lanes].type == 1 or interval.lanes[#interval.lanes].type == 3) then
+                        set[2] = false
+                        set[4] = false
+                        set[8] = false
+                    end
+
+                    set[1] = false
+                    set[3] = false
+                    set[5] = false
+                    set[7] = false
+
+                    for i = #set, 1, -1 do
+                        if (not set[i]) then
+                            table.remove(set, i)
+                        end
+                    end
+
                     for k = 1, nPart do
                         local yDisp = ref - (k - 1) * wPart
                         table.insert(set, {
@@ -123,13 +147,7 @@ function data()
                 
                 local rs = {}
                 for s = 1, nSeg do
-                    local seth = {}
-                    for _, e in ipairs(set(s)) do
-                        if not e.remove then
-                            table.insert(seth, e)
-                        end
-                    end
-                    table.insert(rs, seth)
+                    table.insert(rs, set(s))
                 end
                 table.insert(result.railingModels, rs)
             end

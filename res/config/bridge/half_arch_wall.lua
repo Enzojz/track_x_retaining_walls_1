@@ -34,7 +34,7 @@ function data()
                 table.insert(result.pillarModels, {{}})
             end
             
-            local maxHeight = math.max(0, table.unpack(params.pillarHeights)) + 5
+            local maxHeight = math.max(15, table.unpack(params.pillarHeights)) + 5
             
             for i, interval in ipairs(params.railingIntervals) do
                 local nSeg = math.floor((interval.length) / 5)
@@ -88,11 +88,21 @@ function data()
                         }
                     }
                     
+                    set[1] = false
+                    set[3] = false
+                    set[5] = false
+
+                    for i = #set, 1, -1 do
+                        if (not set[i]) then
+                            table.remove(set, i)
+                        end
+                    end
+                    
                     for k = 1, nPart do
                         local yDisp = ref - (k - 1) * wPart
                         table.insert(set, {
                             id = "bridge/trw/brick_surface.mdl",
-                            transf = {xScale, 0, 0, 0, 0, wScale, 0, 0, 0, 0, 1, 0, x, yScale, 0, 1}
+                            transf = {xScale, 0, 0, 0, 0, wScale, 0, 0, 0, 0, 1, 0, x, yDisp, 0, 1}
                         })
                         if (n == 1) then
                             table.insert(set, {

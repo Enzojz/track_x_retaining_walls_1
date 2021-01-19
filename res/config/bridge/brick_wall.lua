@@ -34,7 +34,7 @@ function data()
                 table.insert(result.pillarModels, {{}})
             end
             
-            local maxHeight = math.max(0, table.unpack(params.pillarHeights)) + 5
+            local maxHeight = math.max(15, table.unpack(params.pillarHeights)) + 5
             
             for i, interval in ipairs(params.railingIntervals) do
                 local nSeg = math.floor((interval.length) / 5)

@@ -34,7 +34,7 @@ function data()
                 table.insert(result.pillarModels, {{}})
             end
             
-            local maxHeight = math.max(0, table.unpack(params.pillarHeights)) + 5
+            local maxHeight = math.max(15, table.unpack(params.pillarHeights)) + 5
             
             for i, interval in ipairs(params.railingIntervals) do
                 local nSeg = math.floor((interval.length) / 5)
@@ -88,6 +88,22 @@ function data()
                             transf = {xScale, 0, 0, 0, 0, 1, 0, 0, 0, 0, zScale, 0, x, lDisp, -3, 1}
                         }
                     }
+                    
+                    if (interval.lanes[1].type == 2 or interval.lanes[1].type == 3) then
+                        set[1] = false
+                        set[5] = false
+                    end
+                    
+                    if (interval.lanes[#interval.lanes].type == 1 or interval.lanes[#interval.lanes].type == 3) then
+                        set[2] = false
+                        set[6] = false
+                    end
+
+                    for i = #set, 1, -1 do
+                        if (not set[i]) then
+                            table.remove(set, i)
+                        end
+                    end
                     
                     for k = 1, nPart do
                         local yDisp = ref - (k - 1) * wPart

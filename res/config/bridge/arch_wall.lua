@@ -3,7 +3,6 @@
 -- Please study it and write your own code, it's easy to understand :)
 -- For more information about the format required by the game visite:
 -- https://www.transportfever.net/lexicon/index.php?entry/288-raw-bridge-data/
-local dump = require "luadump"
 function data()
     return {
         name = _("ARCH_WALL"),
@@ -35,7 +34,7 @@ function data()
                 table.insert(result.pillarModels, {{}})
             end
             
-            local maxHeight = math.max(0, table.unpack(params.pillarHeights)) + 5
+            local maxHeight = math.max(15, table.unpack(params.pillarHeights)) + 5
             
             for i, interval in ipairs(params.railingIntervals) do
                 local nSeg = math.floor((interval.length) / 5)
@@ -88,7 +87,7 @@ function data()
                             transf = {xScale, 0, 0, 0, 0, yScale, 0, 0, 0, 0, zScale, 0, x, yDisp + lDisp, -3, 1}
                         }
                     }
-                    
+                                        
                     for k = 1, nPart do
                         local yDisp = ref - (k - 1) * wPart
                         table.insert(set, {
