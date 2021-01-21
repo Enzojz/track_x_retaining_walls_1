@@ -1,31 +1,28 @@
-local trw = require "trw"
-
 local parts = {
-  ["start"] = trw.abutmentStart,
-  ["end"] = trw.abutmentEnd,
-  ["complete"] = trw.abutmentComplete
+    ["start"] = "abutmentStart",
+    ["end"] = "abutmentEnd",
+    ["complete"] = "abutmentComplete"
 }
 
 local halfParts = {
-  ["start"] = trw.halfAbutmentStart,
-  ["end"] = trw.halfAbutmentEnd,
-  ["complete"] = trw.halfAbutmentComplete
+    ["start"] = "halfAbutmentStart",
+    ["end"] = "halfAbutmentEnd",
+    ["complete"] = "halfAbutmentComplete"
 }
 
 local abutmentList = {
-  ["arch_bridge"] = parts,
-  ["arch_col"] = parts,
-  ["concrete_col"] = parts,
-  ["half_arch_bridge"] = halfParts,
-  ["half_arch_col"] = halfParts,
-  ["half_concrete_col"] = halfParts
+    ["arch_bridge"] = parts,
+    ["arch_col"] = parts,
+    ["concrete_col"] = parts,
+    ["half_arch_bridge"] = halfParts,
+    ["half_arch_col"] = halfParts,
+    ["half_concrete_col"] = halfParts
 }
-
 
 function data()
     return {
         info = {
-            minorVersion = 1,
+            minorVersion = 2,
             severityAdd = "NONE",
             severityRemove = "WARNING",
             name = _("NAME"),
@@ -47,32 +44,32 @@ function data()
             },
         },
         postRunFn = function(settings, params)
-
-            for bridgeName, parts in ipairs(abutmentList) do
-              local bridge = api.res.bridgeTypeRep.get(api.res.bridgeTypeRep.find(bridgeName .. ".lua"))
-              for part, fn in ipairs(parts) do
-                local newBridge = api.type.BridgeType.new()
-                newBridge.name = bridge.name
-                newBridge.icon = bridge.icon
-                newBridge.yearFrom = 1800
-                newBridge.yearTo = 1800
-                newBridge.sidewalkHeight = -1
-                newBridge.carriers = { 0, 1 }
-                newBridge.speedLimit = bridge.speedLimit
-                newBridge.pillarWidth = bridge.pillarWidth
-                newBridge.pillarLen = bridge.pillarLen
-                newBridge.pillarMinDist = bridge.pillarMinDist 
-                newBridge.pillarMaxDist = bridge.pillarMaxDist 
-                newBridge.pillarTargetDist = bridge.pillarTargetDist 
-                newBridge.cost = bridge.cost
-                newBridge.maintenanceCost = bridge.maintenanceCost
-                newBridge.pillarGroundTexture = ""
-                newBridge.pillarGroundTextureOffset = 2
-                newBridge.updateScript.fileName = "config/bridge/trw." .. bridgeName
-                newBridge.updateScript.params = { fn = fn }
-    
-                api.res.bridgeTypeRep.add(("%s_%s.lua"):format(bridgeName, part), newBridge, true)
-              end
+            for bridgeName, parts in pairs(abutmentList) do
+                local bridge = api.res.bridgeTypeRep.get(api.res.bridgeTypeRep.find(bridgeName .. ".lua"))
+                for part, fn in pairs(parts) do
+                    local newBridge = api.type.BridgeType.new()
+                    newBridge.name = bridge.name
+                    newBridge.icon = bridge.icon
+                    newBridge.yearFrom = 1800
+                    newBridge.yearTo = 1800
+                    newBridge.sidewalkHeight = -1
+                    newBridge.carriers = {0, 1}
+                    newBridge.speedLimit = bridge.speedLimit
+                    newBridge.pillarWidth = bridge.pillarWidth
+                    newBridge.pillarLen = bridge.pillarLen
+                    newBridge.pillarMinDist = bridge.pillarMinDist
+                    newBridge.pillarMaxDist = bridge.pillarMaxDist
+                    newBridge.pillarTargetDist = bridge.pillarTargetDist
+                    newBridge.cost = bridge.cost
+                    newBridge.maintenanceCost = bridge.maintenanceCost
+                    newBridge.pillarGroundTexture = bridge.pillarGroundTexture
+                    newBridge.pillarGroundTextureOffset = bridge.pillarGroundTextureOffset
+                    newBridge.updateScript.fileName = "config/bridge/trw." .. bridgeName
+                    newBridge.updateScript.params = {fn = fn}
+                    local newBridgeName = ("%s_%s.lua"):format(bridgeName, part)
+                    api.res.bridgeTypeRep.add(newBridgeName, newBridge, true)
+                    api.res.bridgeTypeRep.setVisible(api.res.bridgeTypeRep.find(newBridgeName), false)
+                end
             end
         end
     }

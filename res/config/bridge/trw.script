@@ -1,13 +1,15 @@
 local trw = require "trw"
-
 local archBridge = require "arch_bridge"
 local archCol = require "arch_col"
 local concreteCol = require "concrete_col"
 
 function data()
     return {
-        archBridge = function(params) return trw.updateFn(archBridge, params.capturedParams.fn)(params) end,
-        archCol = function(params) return trw.updateFn(archCol, params.capturedParams.fn)(params) end,
-        concreteCol = function(params) return trw.updateFn(concreteCol, params.capturedParams.fn)(params) end
+        arch_bridge = function(params) return trw.updateFn(archBridge, trw[params.capturedParams.fn])(params) end,
+        arch_col = function(params) return trw.updateFn(archCol, trw[params.capturedParams.fn])(params) end,
+        concrete_col = function(params) return trw.updateFn(concreteCol, trw[params.capturedParams.fn])(params) end,
+        half_arch_bridge = function(params) return trw.updateFn(archBridge, trw[params.capturedParams.fn])(params) end,
+        half_arch_col = function(params) return trw.updateFn(archCol, trw[params.capturedParams.fn])(params) end,
+        half_concrete_col = function(params) return trw.updateFn(concreteCol, trw[params.capturedParams.fn])(params) end
     }
 end

@@ -6,6 +6,8 @@ function data()
 * Shader Enhancement mod is required by this mod to make a correct rendering.
 
 Changelog:
+1.2
+- Support to abutment
 1.1 
 - Skeleton support
 - Half bridge fix
@@ -32,6 +34,8 @@ Changelog:
 * Shader Enhancement mod est exigé pour un rendu correct de ce mod.    
 
 Changelog:
+1.2
+- Support de culée
 1.1
 - Support de skeleton
 - Correction du demi-pont
@@ -58,6 +62,8 @@ Changelog:
 * 需要着色器增强模组的支持。
 
 更新记录：
+1.2
+- 桥台支持
 1.1 
 - 骨骼支持
 - 错误半边桥的修正
@@ -84,9 +90,11 @@ Changelog:
 * 需要著色器增強模組的支持。
 
 更新記錄：
-1.1
+1.2
+- 橋臺支持
+1.1 
 - 骨骼支持
-- 錯誤半边橋的修正
+- 錯誤半邊橋的修正
 - 分岔支持
 ]],
             CONCRETE_WALL = "水泥擋土牆",
