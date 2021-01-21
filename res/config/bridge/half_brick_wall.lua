@@ -3,6 +3,8 @@
 -- Please study it and write your own code, it's easy to understand :)
 -- For more information about the format required by the game visite:
 -- https://www.transportfever.net/lexicon/index.php?entry/288-raw-bridge-data/
+local brickWall = require "brick_wall"
+local trw = require "trw"
 function data()
     return {
         name = _("HALF_BRICK_WALL"),
@@ -24,79 +26,6 @@ function data()
         noParallelStripSubdivision = true,
         ignoreWaterCollision = true,
         autoGeneration = false,
-        updateFn = function(params)
-            local result = {
-                railingModels = {},
-                pillarModels = {}
-            }
-            
-            for _, height in ipairs(params.pillarHeights) do
-                table.insert(result.pillarModels, {{}})
-            end
-            
-            local maxHeight = math.max(15, table.unpack(params.pillarHeights)) + 5
-            
-            for i, interval in ipairs(params.railingIntervals) do
-                local nSeg = math.floor((interval.length) / 5)
-                if nSeg < 1 then nSeg = 1 end
-                local lSeg = interval.length / nSeg
-                
-                local minOffset = interval.lanes[1].offset
-                local maxOffset = interval.lanes[#interval.lanes].offset
-                
-                local xScale = lSeg / 5
-                local sp = params.railingWidth - (maxOffset - minOffset)
-                local rDisp = minOffset - sp * 0.5 - 0.75
-                local lDisp = maxOffset + sp * 0.5 + 0.75
-                
-                local width = params.railingWidth + 1
-                local midOffset = (maxOffset + minOffset) * 0.5
-                local nPart = math.floor(width / 5 + 1)
-                if (nPart < 1) then nPart = 1 end
-                local wPart = width / nPart
-                local wScale = wPart / 5
-                local ref = midOffset + (width * 0.5)
-                
-                local set = function(n)
-                    local x = (n - 1) * lSeg
-                    local set = {
-                        {
-                            id = "bridge/trw/brick_wall.mdl",
-                            transf = {xScale, 0, 0, 0, 0, 1, 0, 0, 0, 0, maxHeight, 0, x, lDisp, -maxHeight, 1}
-                        }
-                    }
-                    
-                    for k = 1, nPart do
-                        local yDisp = ref - (k - 1) * wPart
-                        table.insert(set, {
-                            id = "bridge/trw/brick_surface.mdl",
-                            transf = {xScale, 0, 0, 0, 0, wScale, 0, 0, 0, 0, 1, 0, x, yDisp, 0, 1}
-                        })
-                        if (n == 1) then
-                            table.insert(set, {
-                                id = "bridge/trw/brick_front.mdl",
-                                transf = {xScale, 0, 0, 0, 0, wScale, 0, 0, 0, 0, maxHeight, 0, x, yDisp, 0, 1}
-                            })
-                        end
-                        if (n == nSeg) then
-                            table.insert(set, {
-                                id = "bridge/trw/brick_back.mdl",
-                                transf = {xScale, 0, 0, 0, 0, wScale, 0, 0, 0, 0, maxHeight, 0, x, yDisp, 0, 1}
-                            })
-                        end
-                    end
-                    
-                    return set
-                end
-                
-                local rs = {}
-                for s = 1, nSeg do
-                    table.insert(rs, set(s))
-                end
-                table.insert(result.railingModels, rs)
-            end
-            
-            return result
-        end
+        updateFn = trw.updateFn(brickWall, trw.half)
     }
 end
