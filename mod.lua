@@ -22,7 +22,7 @@ local abutmentList = {
 function data()
     return {
         info = {
-            minorVersion = 2,
+            minorVersion = 3,
             severityAdd = "NONE",
             severityRemove = "WARNING",
             name = _("NAME"),
