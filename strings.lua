@@ -3,7 +3,6 @@ function data()
         en = {
             NAME = "Tracks × Retaining Walls",
             DESC = [[A set of bridge help you build tracks with retaining walls under it.
-* Shader Enhancement mod is required by this mod to make a correct rendering.
 
 Changelog:
 1.2
@@ -31,7 +30,6 @@ Changelog:
         fr = {
             NAME = "Voie × Mur de soutènement",
             DESC = [[Ce mod contient un ensemble de pont pour facilier la construction des murs de soutènement sous la voie.
-* Shader Enhancement mod est exigé pour un rendu correct de ce mod.    
 
 Changelog:
 1.2
@@ -59,7 +57,6 @@ Changelog:
         zh_CN = {
             NAME = "轨道 × 挡土墙",
             DESC = [[本模组可以以桥梁方式在轨道下方建造挡土墙.
-* 需要着色器增强模组的支持。
 
 更新记录：
 1.2
@@ -87,7 +84,6 @@ Changelog:
         zh_TW = {
             NAME = "軌道 × 擋土牆",
             DESC = [[本模組可以以橋樑方式在軌道下方建造擋土牆.
-* 需要著色器增強模組的支持。
 
 更新記錄：
 1.2
